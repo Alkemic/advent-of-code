@@ -9,15 +9,10 @@ input=${input//$'\n'} # rm newlines
 input=${input//do()/$'\n'do()}
 input=${input//don\'t()/$'\n'don\'t()}
 
-# set -x
 # todo: find a pure bash way
-echo "don't()*"
-# input=${input//'don'"'"'t()*'}
 input=${input##'t\(\).*'}
-# input=$(grep -v "^don't()" <<< $input)
-# set +x
-printf '%s\n' $input
-input=${input//)/)$'\n'} # break after each closing bracket , for easier
+input=$(grep -v "^don't()" <<< $input)
+input=${input//)/)$'\n'} # break after each closing bracket, for easier parsing
 
 
 result=0
