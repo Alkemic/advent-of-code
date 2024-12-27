@@ -65,13 +65,6 @@ while read -r line; do
     fi
 done < "${input_file}"
 
-## loop over rules and print them (debugging purposes)
-#for key in "${!ordering[@]}"; do
-#	value=${ordering[$key]}
-#	read -ra numbers <<< "$value"
-#
-#	echo "$key = ${numbers[@]}"
-#done
 
 for update in "${updates[@]}"; do
     IFS=, read -ra pages <<< "$update"
